@@ -5,6 +5,7 @@ import {
   CardContent,
   Checkbox,
   Container,
+  Fab,
   FormControlLabel,
   Grid,
   IconButton,
@@ -46,10 +47,8 @@ import PostLoginFooter from "../../layouts/desktop/PostLoginFooter";
 
 
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-
-
-
-
+import './MobileBookinFlow.css'
+import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined';
 
 
 
@@ -287,7 +286,7 @@ export default function MobileBookingFlow(props) {
         sx={{ backgroundColor: "white", padding: "20px" }}
       >
 
-        <div>
+        {/* <div>
           {[ 'bottom'].map((anchor) => (
             <React.Fragment key={anchor}>
               <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
@@ -301,7 +300,14 @@ export default function MobileBookingFlow(props) {
               </SwipeableDrawer>
             </React.Fragment>
           ))}
-        </div>
+        </div> */}
+        {/* <div className="float">
+          <Fab style={{narginbottom :20}} color='green' size='large'>
+            Filter
+          </Fab>
+        </div> */}
+
+
         <Container>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={4}>
@@ -728,6 +734,35 @@ export default function MobileBookingFlow(props) {
           </Grid>
         </Container>
       </AppBar>
+
+
+
+
+
+      <div className="filter">
+          {[ 'bottom'].map((anchor) => (
+            <React.Fragment key={anchor}>
+              <Button onClick={toggleDrawer(anchor, true)} style={{ color: "white" }}><FilterAltOutlinedIcon/>FIlter</Button>
+              <SwipeableDrawer
+                anchor={anchor}
+                open={state[anchor]}
+                onClose={toggleDrawer(anchor, false)}
+                onOpen={toggleDrawer(anchor, true)}
+              >
+                {list(anchor)}
+              </SwipeableDrawer>
+            </React.Fragment>
+          ))}
+        </div>
+        {/* <div className="float">
+          <Fab variant='extended' style={{padding: "7px", bottom: "-100px"}} color='green' size='large'>
+            Filter
+          </Fab>
+        </div> */}
+
+
+
+
       <Container sx={{ marginTop: "2%" }}>
         <Grid container spacing={2}>
 
